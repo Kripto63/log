@@ -8,7 +8,7 @@ class Hash_word:
             'hex': hash(tuple(words)),
             }
 
-
+    # Приоброзование массива строк в массив хешей
     def __set_list_hex_word(self, words):
         list_hex_word = []
         list_words = words.split(" ")
