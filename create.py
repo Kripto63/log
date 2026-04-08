@@ -1,4 +1,3 @@
-# import model.test.Hash_word as hw
 import model.test
 
 procent_error = 30
