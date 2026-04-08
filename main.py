@@ -1,4 +1,3 @@
-import hashlib
 import model.test
 import model.vector
 from create import examination_poof
