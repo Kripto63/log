@@ -3,12 +3,24 @@ import model.test
 
 procent_error = 30
 
-# def create(after_poof, now_poof):
-#     after = hw(after_poof)
-#     now = hw(now_poof)
-#
-#     print(hw)
+def examination_poof(test, test2, poof, f):
+    try:
 
+        list_hex_word = comparison_poof(test, test2, poof)
+        poof = model.test.Hash_word(" ".join(list_hex_word))
+        print('----')
+        print(poof.d['words'])
+
+    except UnboundLocalError:
+        print("Размер списков отличается")
+
+    except TypeError:
+        print("Строки отличатся")
+
+    if poof in f:
+        print(f)
+    else:
+        f.append({poof.get_hex(): poof})
 
 def comparison_poof(test, test2, poof) -> list:
     if (len(test) == len(test2)):

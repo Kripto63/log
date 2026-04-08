@@ -1,7 +1,7 @@
 import hashlib
 import model.test
 import model.vector
-from create import comparison_poof
+from create import examination_poof
 
 
 if __name__ == '__main__':
@@ -16,25 +16,7 @@ if __name__ == '__main__':
     test = poof.get_list_hex_word()
     test2 = model.test.Hash_word(words2).get_list_hex_word()
 
-    
-    try:
-        
-        list_hex_word = comparison_poof(test, test2, poof)
-        poof = model.test.Hash_word(" ".join(list_hex_word))
-        print('----')
-        print(poof.d['words'])
-    
-    except UnboundLocalError:
-        print("Размер списков отличается")
-        
-    except TypeError:
-        print("Строки отличатся")
-
-    if poof in f:
-        print(f)
-    else:
-        f.append({poof.get_hex(): poof})
-
+    examination_poof(test, test2, poof, f)
 
     print(f)
     
