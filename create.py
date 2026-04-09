@@ -4,9 +4,9 @@ procent_error = 30
 
 def examination_poof(test, test2, poof, f):
     try:
-
-        list_hex_word = comparison_poof(test, test2, poof)
-        poof = model.test.Hash_word(" ".join(list_hex_word))
+        
+        list_hex_word = comparison_poof(test, test2, poof) # Вызвать функцию проверки предложения
+        poof = model.test.Hash_word(" ".join(list_hex_word)) # Строку преобрзовать объект Hash_word
         print('----')
         print(poof.d['words'])
 
