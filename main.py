@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
     for i in queue_vector:
         try:
-            print('---------------')
+            print('----------------')
             print(f'{i.get_start().get_word()} => {i.get_end().get_word()}')
         except AttributeError:
             print()
