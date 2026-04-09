@@ -39,7 +39,7 @@ if __name__ == '__main__':
     for i in queue_vector:
         try:
             print('----------------')
-            print(f'{i.get_start().get_word()} => {i.get_end().get_word()}')
+            print(f'{i.get_start().get_word()} {i.get_start()} => {i.get_end().get_word()} {i.get_end()}')
         except AttributeError:
             print()
 
