@@ -11,6 +11,7 @@ class Hash_word:
     # Приоброзование массива строк в массив хешей
     def __set_list_hex_word(self, words):
         list_hex_word = []
+        print(words)
         list_words = words.split(" ")
         for i in list_words:
             word_bytes = i.encode('UTF-8')
@@ -35,6 +36,11 @@ class Hash_word:
     
     def get_hex(self):
         return self.d['hex']
+
+    def update_data(self, data):
+        self.d['words'] = data
+        self.d['list_hex_words'] = self.__set_list_hex_word(" ".join(data))
+
 
 
             

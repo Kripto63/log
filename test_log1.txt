@@ -1,0 +1,6 @@
+2026-04-09 10:00:01 INFO [MainThread] Application started. Version: 1.2.5. Build: 10250.
+2026-04-09 10:00:01 INFO [MainThread] Started. Version: to 1.2.5. Build: 102250.
+2026-04-09 10:00:01 INFO [MainThread] Application started. Version: 1.2.5. Build: 10250.
+2026-04-09 10:00:01 DEBUG [DBConnector] Attempting to connect to database at 'jdbc:postgresql://localhost:5432/myapp_db'.
+2026-04-09 10:00:02 INFO [DBConnector] Successfully connected to database.
+2026-04-09 10:00:01 INFO [MainThread] Application database. Version: 1.2.5. Build: 10222.
