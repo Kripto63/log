@@ -1,6 +1,6 @@
 import model.test
 
-procent_error = 30
+procent_error = 40
 
 def examination_poof(poof, queue_vector):
     try:
@@ -13,16 +13,19 @@ def examination_poof(poof, queue_vector):
             list_hex_word = comparison_poof(poof.get_word(), vector.get_end().get_word(), poof) # Вызвать функцию проверки предложения            
             poof = model.test.Hash_word(" ".join(list_hex_word)) # Строку преобрзовать объект Hash_word
 
-        if poof in queue_vector:
-            print(poof.get_word())
-        else:
-            queue_vector.append(model.vector.Vector(vector, poof))
+
 
     except UnboundLocalError:
         print("Размер списков отличается")
 
     except TypeError:
         print("Строки отличатся")
+
+
+    if poof in queue_vector:
+        print(poof.get_word())
+    else:
+        queue_vector.append(model.vector.Vector(queue_vector[-1].get_end(), poof))
 
 
 
