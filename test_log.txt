@@ -1,0 +1,188 @@
+2026-04-09 10:00:01 INFO [MainThread] Application started. Version: 1.2.5. Build: 10250.
+2026-04-09 10:00:01 DEBUG [DBConnector] Attempting to connect to database at 'jdbc:postgresql://localhost:5432/myapp_db'.
+2026-04-09 10:00:02 INFO [DBConnector] Successfully connected to database.
+2026-04-09 10:00:03 INFO [NetworkManager] Initializing network interface.
+2026-04-09 10:00:04 DEBUG [NetworkManager] Setting up socket for port 8080.
+2026-04-09 10:00:05 INFO [UserManager] Loading user data from cache.
+2026-04-09 10:00:06 ERROR [UserManager] Failed to load user data from cache. Re-fetching from database.
+2026-04-09 10:00:07 DEBUG [DBConnector] Executing query: SELECT * FROM users WHERE id = 1.
+2026-04-09 10:00:08 INFO [User:1] User 'admin' loaded successfully.
+2026-04-09 10:00:09 DEBUG [CacheManager] Storing user 'admin' in cache.
+2026-04-09 10:00:10 INFO [WebServer] Starting web server on port 8080.
+2026-04-09 10:00:11 WARN [WebServer] Port 8080 is already in use. Attempting to bind to an alternative port.
+2026-04-09 10:00:12 INFO [WebServer] Web server successfully bound to port 8080.
+2026-04-09 10:00:15 INFO [APIHandler] Received GET request for '/api/v1/status'.
+2026-04-09 10:00:16 DEBUG [APIRouter] Routing '/api/v1/status' to 'StatusController'.
+2026-04-09 10:00:17 INFO [StatusController] Processing status request.
+2026-04-09 10:00:18 DEBUG [DBConnector] Executing query: SELECT COUNT(*) FROM tasks WHERE status = 'pending'.
+2026-04-09 10:00:19 INFO [StatusController] Pending tasks count: 5.
+2026-04-09 10:00:20 INFO [APIHandler] Responding to GET /api/v1/status with status code 200.
+2026-04-09 10:00:25 INFO [APIHandler] Received POST request for '/api/v1/users'.
+2026-04-09 10:00:26 DEBUG [APIRouter] Routing '/api/v1/users' to 'UserController'.
+2026-04-09 10:00:27 INFO [UserController] Processing user creation request.
+2026-04-09 10:00:28 DEBUG [UserManager] Validating new user data.
+2026-04-09 10:00:29 WARN [UserManager] Username 'testuser' is too short. Minimum length is 6 characters.
+2026-04-09 10:00:30 ERROR [UserController] User creation failed: Invalid username.
+2026-04-09 10:00:31 INFO [APIHandler] Responding to POST /api/v1/users with status code 400.
+2026-04-09 10:00:35 INFO [AuthManager] User 'guest' attempting to authenticate.
+2026-04-09 10:00:36 DEBUG [DBConnector] Executing query: SELECT password_hash FROM users WHERE username = 'guest'.
+2026-04-09 10:00:37 ERROR [AuthManager] User 'guest' not found in the database.
+2026-04-09 10:00:38 INFO [APIHandler] Received GET request for '/resource/123'.
+2026-04-09 10:00:39 DEBUG [APIRouter] Routing '/resource/123' to 'ResourceController'.
+2026-04-09 10:00:40 INFO [ResourceController] Fetching resource with ID 123.
+2026-04-09 10:00:41 DEBUG [DBConnector] Executing query: SELECT * FROM resources WHERE id = 123.
+2026-04-09 10:00:42 INFO [ResourceController] Resource found. Name: 'Sample Item'.
+2026-04-09 10:00:43 INFO [APIHandler] Responding to GET /resource/123 with status code 200.
+2026-04-09 10:00:48 INFO [Scheduler] Task 'ProcessBatch' scheduled to run at 2026-04-09 11:00:00.
+2026-04-09 10:00:50 DEBUG [CacheManager] Cache hit for key 'user_session:abc123xyz'.
+2026-04-09 10:00:55 INFO [APIHandler] Received PUT request for '/api/v1/tasks/45'.
+2026-04-09 10:00:56 DEBUG [APIRouter] Routing '/api/v1/tasks/45' to 'TaskController'.
+2026-04-09 10:00:57 INFO [TaskController] Updating task 45.
+2026-04-09 10:00:58 DEBUG [DBConnector] Executing query: UPDATE tasks SET status = 'completed', completed_at = NOW() WHERE id = 45.
+2026-04-09 10:00:59 INFO [TaskController] Task 45 updated successfully.
+2026-04-09 10:01:00 INFO [APIHandler] Responding to PUT /api/v1/tasks/45 with status code 200.
+2026-04-09 10:01:05 INFO [BackgroundWorker] Starting batch processing.
+2026-04-09 10:01:06 DEBUG [DBConnector] Executing query: SELECT id FROM items WHERE processed = FALSE LIMIT 100.
+2026-04-09 10:01:07 INFO [BackgroundWorker] Found 75 unprocessed items.
+2026-04-09 10:01:08 DEBUG [ItemProcessor] Processing item ID 1001.
+2026-04-09 10:01:09 DEBUG [ExternalService] Calling external API 'http://api.thirdparty.com/process'.
+2026-04-09 10:01:12 ERROR [ExternalService] External API call failed with status code 503. Retrying in 5 seconds.
+2026-04-09 10:01:17 DEBUG [ExternalService] Retrying external API call to 'http://api.thirdparty.com/process'.
+2026-04-09 10:01:20 INFO [BackgroundWorker] Successfully processed 50 items in this batch.
+2026-04-09 10:01:21 DEBUG [ItemProcessor] Processing item ID 1002.
+2026-04-09 10:01:22 DEBUG [DBConnector] Executing query: UPDATE items SET processed = TRUE WHERE id = 1001.
+2026-04-09 10:01:23 INFO [BackgroundWorker] Batch processing completed. Processed 75 items.
+2026-04-09 10:01:28 INFO [APIHandler] Received DELETE request for '/api/v1/files/report.pdf'.
+2026-04-09 10:01:29 DEBUG [APIRouter] Routing '/api/v1/files/report.pdf' to 'FileController'.
+2026-04-09 10:01:30 INFO [FileController] Deleting file 'report.pdf'.
+2024-04-09 10:01:31 DEBUG [FileManager] Deleting /data/reports/report.pdf.
+2026-04-09 10:01:32 INFO [FileController] File deleted successfully.
+2026-04-09 10:01:33 INFO [APIHandler] Responding to DELETE /api/v1/files/report.pdf with status code 200.
+2026-04-09 10:01:38 INFO [HealthChecker] Performing system health check.
+2026-04-09 10:01:39 DEBUG [HealthChecker] Checking database connection pool status.
+2026-04-09 10:01:40 INFO [HealthChecker] Database connection pool is healthy.
+2026-04-09 10:01:41 DEBUG [HealthChecker] Checking memory usage.
+2026-04-09 10:01:42 INFO [HealthChecker] Memory usage is within acceptable limits (65%).
+2026-04-09 10:01:43 INFO [HealthChecker] System health check completed. All systems are operational.
+2026-04-09 10:01:48 INFO [APIHandler] Received GET request for '/api/v1/users/profile/1'.
+2026-04-09 10:01:49 DEBUG [APIRouter] Routing '/api/v1/users/profile/1' to 'UserController'.
+2026-04-09 10:01:50 INFO [UserController] Fetching profile for user ID 1.
+2026-04-09 10:01:51 DEBUG [DBConnector] Executing query: SELECT first_name, last_name, email FROM users WHERE id = 1.
+2026-04-09 10:01:52 INFO [UserController] Profile found.
+2026-04-09 10:01:53 INFO [APIHandler] Responding to GET /api/v1/users/profile/1 with status code 200.
+2026-04-09 10:01:58 INFO [Scheduler] Task 'SendNotifications' scheduled to run at 2026-04-09 10:30:00.
+2026-04-09 10:02:03 INFO [APIHandler] Received POST request for '/api/v1/logs/events'.
+2026-04-09 10:02:04 DEBUG [APIRouter] Routing '/api/v1/logs/events' to 'LogController'.
+2026-04-09 10:02:05 INFO [LogController] Receiving log event.
+2026-04-09 10:02:06 DEBUG [DBConnector] Executing query: INSERT INTO audit_logs (timestamp, event_type, user_id, message) VALUES (NOW(), 'SYSTEM_EVENT', 1, 'New log entry received').
+2026-04-09 10:02:07 INFO [APIHandler] Responding to POST /api/v1/logs/events with status code 201.
+2026-04-09 10:02:13 INFO [APIHandler] Received GET request for '/api/v1/tasks?status=pending'.
+2026-04-09 10:02:14 DEBUG [APIRouter] Routing '/api/v1/tasks' to 'TaskController'.
+2026-04-09 10:02:15 INFO [TaskController] Fetching tasks with status 'pending'.
+2026-04-09 10:02:16 DEBUG [DBConnector] Executing query: SELECT id, title, description FROM tasks WHERE status = 'pending'.
+2026-04-09 10:02:17 INFO [TaskController] Found 5 pending tasks.
+2026-04-09 10:02:18 INFO [APIHandler] Responding to GET /api/v1/tasks?status=pending with status code 200.
+2026-04-09 10:02:23 INFO [APIMonitor] Checking API endpoint responsiveness.
+2026-04-09 10:02:24 WARN [APIMonitor] Response time for '/api/v1/status' is higher than usual (850ms).
+2026-04-09 10:02:29 INFO [APIHandler] Received PUT request for '/api/v1/settings'.
+2026-04-09 10:02:30 DEBUG [APIRouter] Routing '/api/v1/settings' to 'SettingsController'.
+2026-04-09 10:02:31 INFO [SettingsController] Updating application settings.
+2026-04-09 10:02:32 DEBUG [ConfigManager] Saving configuration changes.
+2026-04-09 10:02:33 INFO [SettingsController] Settings updated successfully.
+2026-04-09 10:02:34 INFO [APIHandler] Responding to PUT /api/v1/settings with status code 200.
+2026-04-09 10:02:39 INFO [CacheManager] Evicting all entries from 'temp_data' cache.
+2026-04-09 10:02:44 INFO [APIHandler] Received GET request for '/api/v1/users/permissions/2'.
+2026-04-09 10:02:45 DEBUG [APIRouter] Routing '/api/v1/users/permissions/2' to 'UserController'.
+2026-04-09 10:02:46 INFO [UserController] Fetching permissions for user ID 2.
+2026-04-09 10:02:47 DEBUG [AuthManager] Checking permissions for user 2.
+2026-04-09 10:02:48 INFO [UserController] Permissions retrieved.
+2026-04-09 10:02:49 INFO [APIHandler] Responding to GET /api/v1/users/permissions/2 with status code 200.
+2026-04-09 10:02:54 INFO [Scheduler] Task 'CleanupOldData' scheduled to run at 2026-04-09 12:00:00.
+2026-04-09 10:02:59 INFO [APIHandler] Received POST request for '/api/v1/products'.
+2026-04-09 10:03:00 DEBUG [APIRouter] Routing '/api/v1/products' to 'ProductController'.
+2026-04-09 10:03:01 INFO [ProductController] Creating new product.
+2026-04-09 10:03:02 DEBUG [DBConnector] Executing query: INSERT INTO products (name, price, stock) VALUES ('New Gadget', 99.99, 150).
+2026-04-09 10:03:03 INFO [ProductController] Product created successfully. ID: 501.
+2026-04-09 10:03:04 INFO [APIHandler] Responding to POST /api/v1/products with status code 201.
+2026-04-09 10:03:09 INFO [NetworkManager] Pinging external service 'google.com'.
+2026-04-09 10:03:11 INFO [NetworkManager] Ping to 'google.com' successful. Latency: 25ms.
+2026-04-09 10:03:14 INFO [APISessionManager] Session 789abc expired. Cleaning up.
+2026-04-09 10:03:19 INFO [APIHandler] Received GET request for '/api/v1/reports/daily'.
+2026-04-09 10:03:20 DEBUG [APIRouter] Routing '/api/v1/reports/daily' to 'ReportController'.
+2026-04-09 10:03:21 INFO [ReportController] Generating daily report.
+2026-04-09 10:03:22 DEBUG [DBConnector] Executing query: SELECT SUM(amount) FROM sales WHERE DATE(sale_date) = CURRENT_DATE.
+2026-04-09 10:03:23 INFO [ReportController] Daily sales amount: 1542.75.
+2026-04-09 10:03:24 INFO [APIHandler] Responding to GET /api/v1/reports/daily with status code 200.
+2026-04-09 10:03:29 INFO [BackgroundWorker] Starting nightly backup process.
+2026-04-09 10:03:30 DEBUG [DBConnector] Executing query: SELECT pg_dumpall()...
+2026-04-09 10:03:35 ERROR [BackgroundWorker] Failed to execute pg_dumpall. Insufficient disk space.
+2026-04-09 10:03:40 INFO [APIHandler] Received GET request for '/api/v1/items/search?q=widget'.
+2026-04-09 10:03:41 DEBUG [APIRouter] Routing '/api/v1/items/search' to 'ItemController'.
+2026-04-09 10:03:42 INFO [ItemController] Searching for items matching 'widget'.
+2026-04-09 10:03:43 DEBUG [ElasticsearchClient] Querying Elasticsearch index 'items' for 'widget'.
+2026-04-09 10:03:45 INFO [ItemController] Found 15 items.
+2026-04-09 10:03:46 INFO [APIHandler] Responding to GET /api/v1/items/search?q=widget with status code 200.
+2026-04-09 10:03:51 INFO [APIHandler] Received POST request for '/api/v1/auth/login'.
+2026-04-09 10:03:52 DEBUG [APIRouter] Routing '/api/v1/auth/login' to 'AuthController'.
+2026-04-09 10:03:53 INFO [AuthController] User 'admin' attempting to log in.
+2026-04-09 10:03:54 DEBUG [AuthManager] Verifying password hash for 'admin'.
+2026-04-09 10:03:55 INFO [AuthController] Login successful for 'admin'.
+2026-04-09 10:03:56 DEBUG [SessionManager] Creating new session for user 'admin'.
+2026-04-09 10:03:57 INFO [APIHandler] Responding to POST /api/v1/auth/login with status code 200.
+2026-04-09 10:04:02 INFO [SystemMonitor] CPU load: 45%, RAM usage: 70%.
+2026-04-09 10:04:07 INFO [APIHandler] Received GET request for '/health'.
+2026-04-09 10:04:08 DEBUG [APIRouter] Routing '/health' to 'SystemController'.
+2026-04-09 10:04:09 INFO [SystemController] Checking system health.
+2026-04-09 10:04:10 INFO [SystemController] System is healthy.
+2026-04-09 10:04:11 INFO [APIHandler] Responding to GET /health with status code 200.
+2026-04-09 10:04:16 INFO [APISubscriber] Subscribing to topic 'user_updates'.
+2026-04-09 10:04:21 INFO [APISubscriber] Message received on 'user_updates': User 'testuser' status changed to 'active'.
+2026-04-09 10:04:26 INFO [CacheManager] Cache statistics: Hits=500, Misses=20, Evictions=5.
+2026-04-09 10:04:31 INFO [APIHandler] Received GET request for '/api/v1/data?filter=active'.
+2026-04-09 10:04:32 DEBUG [APIRouter] Routing '/api/v1/data' to 'DataController'.
+2026-04-09 10:04:33 INFO [DataController] Fetching active data.
+2026-04-09 10:04:34 DEBUG [DBConnector] Executing query: SELECT * FROM data WHERE is_active = TRUE.
+2026-04-09 10:04:35 INFO [DataController] Retrieved 100 active data records.
+2026-04-09 10:04:36 INFO [APIHandler] Responding to GET /api/v1/data?filter=active with status code 200.
+2026-04-09 10:04:41 INFO [Scheduler] Task 'DailyReport' skipped due to missing permissions.
+2026-04-09 10:04:46 INFO [APIHandler] Received GET request for '/api/v1/users/1/orders'.
+2026-04-09 10:04:47 DEBUG [APIRouter] Routing '/api/v1/users/1/orders' to 'OrderController'.
+2026-04-09 10:04:48 INFO [OrderController] Fetching orders for user 1.
+2026-04-09 10:04:49 DEBUG [DBConnector] Executing query: SELECT * FROM orders WHERE user_id = 1 ORDER BY order_date DESC.
+2026-04-09 10:04:50 INFO [OrderController] Found 12 orders for user 1.
+2026-04-09 10:04:51 INFO [APIHandler] Responding to GET /api/v1/users/1/orders with status code 200.
+2026-04-09 10:04:56 INFO [APIHandler] Received POST request for '/api/v1/events'.
+2026-04-09 10:04:57 DEBUG [APIRouter] Routing '/api/v1/events' to 'EventController'.
+2026-04-09 10:04:58 INFO [EventController] Recording new event.
+2026-04-09 10:04:59 DEBUG [DBConnector] Executing query: INSERT INTO events (type, timestamp, details) VALUES ('USER_ACTION', NOW(), '{"user_id": 3, "action": "viewed_page", "page": "/about"}').
+2026-04-09 10:05:00 INFO [APIHandler] Responding to POST /api/v1/events with status code 201.
+2026-04-09 10:05:05 INFO [CleanupService] Starting temporary file cleanup.
+2026-04-09 10:05:07 DEBUG [FileManager] Deleting /tmp/session_data_abc.
+2026-04-09 10:05:08 INFO [CleanupService] Cleanup completed. 15 files removed.
+2026-04-09 10:05:10 INFO [DBConnector] Connection pool size: 15/20.
+2026-04-09 10:05:15 INFO [Scheduler] Task 'ProcessAnalytics' starting.
+2026-04-09 10:05:16 DEBUG [AnalyticsEngine] Processing data from last hour.
+2026-04-09 10:05:20 INFO [Scheduler] Task 'ProcessAnalytics' completed.
+2026-04-09 10:05:25 INFO [APIHandler] Received GET request for '/api/v1/config'.
+2026-04-09 10:05:26 DEBUG [APIRouter] Routing '/api/v1/config' to 'ConfigController'.
+2026-04-09 10:05:27 INFO [ConfigController] Retrieving current configuration.
+2026-04-09 10:05:28 DEBUG [ConfigManager] Reading configuration from file.
+2026-04-09 10:05:29 INFO [APIHandler] Responding to GET /api/v1/config with status code 200.
+2026-04-09 10:05:34 INFO [DBConnector] Database transaction started.
+2026-04-09 10:05:35 DEBUG [DBConnector] Executing query: UPDATE users SET last_login = NOW() WHERE id = 2.
+2026-04-09 10:05:36 INFO [DBConnector] Database transaction committed.
+2026-04-09 10:05:41 INFO [APIHandler] Received GET request for '/api/v1/notifications?user=admin'.
+2026-04-09 10:05:42 DEBUG [APIRouter] Routing '/api/v1/notifications' to 'NotificationController'.
+2026-04-09 10:05:43 INFO [NotificationController] Fetching notifications for 'admin'.
+2026-04-09 10:05:44 DEBUG [DBConnector] Executing query: SELECT * FROM notifications WHERE user_id = (SELECT id FROM users WHERE username = 'admin') AND read = FALSE.
+2026-04-09 10:05:45 INFO [NotificationController] 3 unread notifications found.
+2026-04-09 10:05:46 INFO [APIHandler] Responding to GET /api/v1/notifications?user=admin with status code 200.
+2026-04-09 10:05:51 INFO [APIHandler] Received POST request for '/api/v1/feedback'.
+2026-04-09 10:05:52 DEBUG [APIRouter] Routing '/api/v1/feedback' to 'FeedbackController'.
+2026-04-09 10:05:53 INFO [FeedbackController] Receiving user feedback.
+2026-04-09 10:05:54 DEBUG [DBConnector] Executing query: INSERT INTO feedback (user_id, rating, comment, timestamp) VALUES (1, 5, 'Great app!', NOW()).
+2026-04-09 10:05:55 INFO [APIHandler] Responding to POST /api/v1/feedback with status code 201.
+2026-04-09 10:06:00 INFO [NetworkManager] Shutting down network interface.
+2026-04-09 10:06:01 INFO [WebServer] Stopping web server.
+2026-04-09 10:06:02 INFO [DBConnector] Closing database connection.
+2026-04-09 10:06:03 INFO [MainThread] Application stopped gracefully.

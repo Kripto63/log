@@ -1,14 +1,12 @@
+# Класс вектор нужна для построене последовательности.
 class Vector:
 
-    def __init__(self, data):
-        self.data = data
-        self.vector = []
+    def __init__(self, start, end):
+        self.start = start # в переменную записывается данные
+        self.end = end
 
-    def get_data(self):
-        return self.data
+    def get_start(self):
+        return self.start
     
-    def get_after(self):
-        return self.after
-    
-    def add_vector(self, obj):
-        self.vector.append(obj)
+    def get_end(self):
+        return self.end
