@@ -3,9 +3,14 @@ import model.test
 import model.vector
 from create import examination_poof
 
+def creating_first_vector():
+    start = model.test.Hash_word('START')
+    queue_vector.append(model.vector.Vector(0, start))
+
 
 if __name__ == '__main__':
-    f = []
+    queue_vector = []
+    creating_first_vector()
 
     patern = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) (INFO|DEBUG|WARN|ERROR) (\[.*\] .*)'
 
@@ -14,7 +19,7 @@ if __name__ == '__main__':
 
     for i in file_log:
         poof = model.test.Hash_word(i[2])
-        examination_poof(poof)
+        examination_poof(poof, queue_vector)
 
     # # Создание объекта Hash_word и присваение строки
     # poof = model.test.Hash_word(words)
@@ -26,5 +31,12 @@ if __name__ == '__main__':
     # examination_poof(test, test2, poof, f)
 
     # print(f)
+
+    print('---------------')
+    print('---------------')
+    print('---------------')
+
+    for i in queue_vector:
+        print(i.get_start(), i.get_end())
     
 

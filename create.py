@@ -2,13 +2,21 @@ import model.test
 
 procent_error = 30
 
-def examination_poof(test, test2, poof, f):
+def examination_poof(poof, queue_vector):
     try:
-        
-        list_hex_word = comparison_poof(test, test2, poof) # Вызвать функцию проверки предложения
-        poof = model.test.Hash_word(" ".join(list_hex_word)) # Строку преобрзовать объект Hash_word
-        print('----')
-        print(poof.d['words'])
+        count = 0
+
+        for vector in queue_vector:
+            print(vector)
+            count = count + 1
+
+            list_hex_word = comparison_poof(poof.get_word(), vector.get_end().get_word(), poof) # Вызвать функцию проверки предложения            
+            poof = model.test.Hash_word(" ".join(list_hex_word)) # Строку преобрзовать объект Hash_word
+
+        if poof in queue_vector:
+            print(poof.get_word())
+        else:
+            queue_vector.append(model.vector.Vector(vector, poof))
 
     except UnboundLocalError:
         print("Размер списков отличается")
@@ -16,10 +24,7 @@ def examination_poof(test, test2, poof, f):
     except TypeError:
         print("Строки отличатся")
 
-    if poof in f:
-        print(f)
-    else:
-        f.append({poof.get_hex(): poof})
+
 
 def comparison_poof(test, test2, poof) -> list:
     # если количество слов в предлоение отличается, то это разные предлоения
@@ -42,6 +47,11 @@ def comparison_poof(test, test2, poof) -> list:
 
             else:
                 print(test[i] + "\t" + test2[i] + "\t true")
-                list_hex_word.append(poof.get_word_by_hex_word(test[i])) # Во временную переменную добавить слова из объекта
+                print('--------')
+                list_hex_word.append(test[i]) # Во временную переменную добавить слова из объекта
+
+    else:
+        print(test) 
+        return test
 
     return list_hex_word # Вернуть спсок слов
