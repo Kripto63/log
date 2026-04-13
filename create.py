@@ -1,5 +1,6 @@
 import model.test
 
+
 procent_error = 30
 
 
