@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     patern = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) (INFO|DEBUG|WARN|ERROR) (\[.*\] .*)'
 
-    with open('test_log1.txt', 'r') as f:
+    with open('test_log.txt', 'r') as f:
         file_log = re.findall(patern, f.read())
 
     for i in file_log:
