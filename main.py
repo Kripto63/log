@@ -4,7 +4,7 @@ import model.vector
 from create import examination_poof
 from save_data import save
 from load_data import load
-
+import view.graph as graph
 
 def creating_first_vector(queue_vector):
     start = model.test.Hash_word('START')
@@ -45,25 +45,10 @@ def view_data(queue_vector):
 
 if __name__ == '__main__':
 
-    view_data(education())
+    # view_data(education())
     # view_data(load())
+
+    # queue_vector = education()
     # save(queue_vector)
 
-    # from graphviz import Digraph
-    # # Создание объекта Digraph с комментарием
-    # dot = Digraph(comment='A Round Graph')
-    #
-    # # Добавление узлов
-    # dot.node('A', 'Alex')
-    # dot.node('B', 'Rishu')
-    # dot.node('C', 'Mohe')
-    # dot.node('D', 'Satyam')
-    #
-    # # Добавление рёбер
-    # dot.edges(['AB', 'AC', 'AD'])
-    # dot.edge('B', 'C', constraint='false')
-    # dot.edge('C', 'D', constraint='false')
-    #
-    # # Сохранение графика в файл (по умолчанию в формате PDF)
-    # dot.format = 'png'
-    # dot.render(r"C:/Users/ignat/Documents/python/log/my_file.png", view=True)
+    graph.create(load())
