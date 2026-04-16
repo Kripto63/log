@@ -8,16 +8,17 @@ import view.graph as graph
 
 def creating_first_vector(queue_vector):
     start = model.test.Hash_word('START')
-    queue_vector.append(model.vector.Vector(0, start))
+    queue_vector.append(model.vector.Vector(model.test.Hash_word('0'), start))
 
 
 def education():
     queue_vector = []
     creating_first_vector(queue_vector)
 
-    patern = r'(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}) (INFO|DEBUG|WARN|ERROR) (\[.*\] .*)'
+    # patern = r'\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\] (INFO|DEBUG|WARN|ERROR) (\[.*\] .*)'
+    patern = r'\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\] (INFO|DEBUG|WARN|ERROR)\: (.* .*)'
 
-    with open('test_data/test_log.txt', 'r') as f:
+    with open('test_data/test_log2.txt', 'r') as f:
         file_log = re.findall(patern, f.read())
 
     for i in file_log:
@@ -48,7 +49,7 @@ if __name__ == '__main__':
     # view_data(education())
     # view_data(load())
 
-    # queue_vector = education()
-    # save(queue_vector)
+    queue_vector = education()
+    save(queue_vector)
 
     graph.create(load())
