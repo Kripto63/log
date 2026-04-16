@@ -24,7 +24,7 @@ def create(queue_vector):
 
         for i in range(len(queue_vector)):
             dot.edge(str(queue_vector[i].get_start().get_hex()), 
-                     str(queue_vector[i].get_end().get_hex()))
+                     str(queue_vector[i].get_end().get_hex()), color='blue')
             
             print(i)
 
