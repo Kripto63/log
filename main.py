@@ -44,6 +44,25 @@ def view_data(queue_vector):
     print('---------------')
 
 
+def delete_duble_vector(queue_vector):
+
+    for vector in queue_vector:
+
+        try:
+            for i in range(len(queue_vector)):
+                if ((queue_vector[i].get_end() == vector.get_end()) and
+                    (queue_vector[i].get_start() == vector.get_start()) and 
+                    (queue_vector[i] != vector)):
+                    print('true')
+                    queue_vector.pop(i)
+        except IndexError:
+            print('delete_doble_queue_vector_load')
+    return queue_vector
+
+            # else:
+            #     print('false')
+
+
 if __name__ == '__main__':
 
     # view_data(education())
@@ -59,10 +78,19 @@ if __name__ == '__main__':
   
     queue_vector_load = load()
     t = len(queue_vector_load)
-    queue_vector_new = education(queue_vector_load)
+    delete_doble_queue_vector_load = delete_duble_vector(queue_vector_load)
+    t = len(delete_doble_queue_vector_load)
+    tt = education(delete_doble_queue_vector_load)
+    graph.create(delete_duble_vector(tt), t - 1) 
 
     print(t)
-    graph.create(queue_vector_load, t)
+    graph.create(queue_vector_load, t - 1)
+
+
+    # delete_doble_queue_vector_load = delete_duble_vector(queue_vector_load)
+    # print(len(queue_vector_load), len(delete_doble_queue_vector_load))
+
+    # graph.create(delete_doble_queue_vector_load, len(delete_doble_queue_vector_load) - 1)
 
 
 
@@ -73,4 +101,10 @@ if __name__ == '__main__':
     # for i in range(len(queue_vector_new)):
     #     print(queue_vector_new[i], queue_vector_load[i]) 
     #     examination_poof(queue_vector_new[i], queue_vector_load)
+
+    # view_data(load())
+
+
+    # view_data(queue_vector_load)
+
 
