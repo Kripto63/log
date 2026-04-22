@@ -11,14 +11,14 @@ def creating_first_vector(queue_vector):
     queue_vector.append(model.vector.Vector(model.test.Hash_word('0'), start))
 
 
-def education():
-    queue_vector = []
+def education(queue_vector=[]):
+    # queue_vector = []
     creating_first_vector(queue_vector)
 
     # patern = r'\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\] (INFO|DEBUG|WARN|ERROR) (\[.*\] .*)'
     patern = r'\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\] (INFO|DEBUG|WARN|ERROR)\: (.* .*)'
 
-    with open('test_data/test_log2.txt', 'r') as f:
+    with open('test_data/test_log3.txt', 'r') as f:
         file_log = re.findall(patern, f.read())
 
     for i in file_log:
@@ -49,7 +49,28 @@ if __name__ == '__main__':
     # view_data(education())
     # view_data(load())
 
-    queue_vector = education()
-    save(queue_vector)
+    # queue_vector = education()
+    # save(queue_vector)
 
-    graph.create(load())
+    # graph.create(load())
+
+
+
+  
+    queue_vector_load = load()
+    t = len(queue_vector_load)
+    queue_vector_new = education(queue_vector_load)
+
+    print(t)
+    graph.create(queue_vector_load, t)
+
+
+
+
+        
+
+
+    # for i in range(len(queue_vector_new)):
+    #     print(queue_vector_new[i], queue_vector_load[i]) 
+    #     examination_poof(queue_vector_new[i], queue_vector_load)
+

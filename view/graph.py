@@ -1,7 +1,7 @@
 from graphviz import Digraph
 
 
-def create(queue_vector):
+def create(queue_vector, color):
 
     dot = Digraph(comment='A Round Graph')
     v = []
@@ -23,10 +23,16 @@ def create(queue_vector):
             dot.node(str(v[i]), str(n[i]))
 
         for i in range(len(queue_vector)):
-            dot.edge(str(queue_vector[i].get_start().get_hex()), 
+            if (i <= color): 
+                dot.edge(str(queue_vector[i].get_start().get_hex()), 
                      str(queue_vector[i].get_end().get_hex()), color='blue')
+                print('blue', i)
+            else:
+                dot.edge(str(queue_vector[i].get_start().get_hex()), 
+                     str(queue_vector[i].get_end().get_hex()), color='red')
+                print('red', i)
             
-            print(i)
+            
 
     except AttributeError:
         print(queue_vector[i])
